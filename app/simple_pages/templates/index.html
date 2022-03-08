@@ -1,4 +1,65 @@
 {% extends "base.html" %}
 {% block content %}
-    Index Page
+    <div class="mb-4">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
+                        aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <a href="{{ url_for('simple_pages.show', page="git")}}">
+                    <img src="{{ url_for('static', filename='images/git.webp') }}" class="d-block mw-100" style="width:3600px;height:500px" alt="Click here for Git Manual.">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>GIT</h5>
+                        <p>Click here for Git Manual.</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <a href="{{ url_for('simple_pages.show', page="docker")}}">
+                    <img src="{{ url_for('static', filename='images/docker.png') }}" class="d-block w-100"  style="width:3600px;height:500px" alt="Click here for Docker Manual.">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Docker</h5>
+                        <p>Click here for Docker Manual.</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <a href="{{ url_for('simple_pages.show', page="flask")}}">
+                    <img src="{{ url_for('static', filename='images/flask2.jpg') }}" class="d-block w-100" style="width:3600px;height:500px" alt="Click here for Python Flask Manual.">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Flask</h5>
+                        <p>Click here for Python Flask Manual.</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="{{ url_for('simple_pages.show', page="cicd")}}">
+                    <img src="{{ url_for('static', filename='images/devopscicd.png') }}" class="d-block w-100" style="width:3600px;height:500px"  alt="Click here for CI/Cd Manual.">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>CI/CD</h5>
+                        <p>Click here for CI/Cd Manual.</p>
+                    </div>
+                    </a>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
 {% endblock %}
