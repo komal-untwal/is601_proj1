@@ -61,10 +61,56 @@
 
                         <p class="fs-5 mb-4">
                             To run Pytest tests, we can use below command in the terminal.
-                        <pre class="fs-5"><code>$pytest</code></pre></p>
-                         <p class="fs-5 mb-4">We can also run a single file by explicitly specifying the filename after the Pytest command:
-                        <pre class="fs-5"><code>$pytest test_api.py</code></pre><br></p>
+                        <pre class="fs-5"><code>$pytest</code></pre>
+                        </p>
+                        <p class="fs-5 mb-4">We can also run a single file by explicitly specifying the filename after
+                            the Pytest command:
+                        <pre class="fs-5"><code>$pytest test_api.py</code></pre>
+                        <br>
+                        </p>
+                        <h3 class="fw-bolder mb-4 mt-3">Flask application project structure</h3>
+                        <figure class="mb-4"><img class="img-fluid rounded"
+                                                  src="{{ url_for('static', filename='images/flask_projstrct.png') }}"
+                                                  style="width:700px;height:900px" alt="..."/>
+                        </figure>
 
+                        <div>
+                            <ul class="fs-5 mb-2">
+                                <li>Project1 :- Root Folder of the project.</li>
+                                <li>.github :- This folder contains gitHub action workflow configuration under workflows
+                                    folder
+                                </li>
+                                <li>.github/workflows/dev.yml :- File to define development action workflow of the app
+                                </li>
+                                <li>.github/workflows/prod.yml :- File to define production action workflow of the app
+                                </li>
+                                <li>app/simple_pages/templates :- All 5 html pages including index page are in this
+                                    folder.
+                                </li>
+                                <li>app/simple_pages/__init__.py :- Blueprint code for simple pages.</li>
+                                <li>app/static :- Keep your static files like css, js, media here</li>
+                                <li>app/templates :- Keep your http templates here.</li>
+                                <li>app/__init__.py :– Your project starts here. Blueprints, extensions, commands and
+                                    all other fancy stuff will be defined in their own modules. But all those components
+                                    will be hooked up together here.
+                                </li>
+                                <li>app/run.py :– Code to run the application</li>
+                                <li>calculator :- application file</li>
+                                <li>tests: we define unit tests here</li>
+                                <li>docker-compose.yml :- Orchestration file that contains the configuration to develop
+                                    locally, it overrides the Dockerfile to run the flask development server instead of
+                                    running the gunicorn server that is used for hosting on Heroku.
+                                </li>
+                                <li>Dockerfile :- File used to create an image to run in a container that runs the
+                                    program<
+                                </li>
+                                <li>heroku.yml :- It allows us to build docker image on heroku app.</li>
+                                <li>readme.md :- Information about project.</li>
+                                <li>requirements.txt :- Python modules used in project.</li>
+                            </ul>
+
+
+                        </div>
 
                     </section>
                 </article>
@@ -77,11 +123,17 @@
                     <div class="card-body">
                         <div class="row">
 
-                                <ul class="list-unstyled mb-0 fs-5">
-                                    <li><a href="https://www.softwaretestinghelp.com/python-flask-tutorial/" target="_blank">Flask Basics</a></li>
-                                    <li><a href="https://flask.palletsprojects.com/en/2.0.x/tutorial/" target="_blank">Flask Documentation</a></li>
-                                    <li><a href="https://circleci.com/blog/testing-flask-framework-with-pytest/" target="_blank">Testing Flask with Pytest</a></li>
-                                </ul>
+                            <ul class="list-unstyled mb-0 fs-5">
+                                <li><a href="https://www.softwaretestinghelp.com/python-flask-tutorial/"
+                                       target="_blank">Flask Basics</a></li>
+                                <li><a href="https://flask.palletsprojects.com/en/2.0.x/tutorial/" target="_blank">Flask
+                                    Documentation</a></li>
+                                <li><a href="https://circleci.com/blog/testing-flask-framework-with-pytest/"
+                                       target="_blank">Testing Flask with Pytest</a></li>
+                                <li>
+                                    <a href="https://laymanclass.com/how-to-structure-flask-application-for-larger-projects/"
+                                       target="_blank">Flask Project Skelton</a></li>
+                            </ul>
 
                         </div>
                     </div>
