@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Page content-->
+    <div class="container mt-3 ml-2">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Post content-->
+                <article>
+                    <!-- Post header-->
+                    <header class="mb-4">
+                        <!-- Post title-->
+                        <h1 class="fw-bolder mb-1">Docker</h1>
+                        <!-- Post meta content
+                        <div class="text-muted fst-italic mb-2">Posted on January 1, 2021 by Start Bootstrap</div>
+
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
+                    </header>
+                    <!-- Preview image figure-->
+                    <figure class="mb-4"><img class="img-fluid rounded"
+                                              src="{{ url_for('static', filename='images/docker.png') }}"
+                                              style="width:900px;height:400px" alt="..."/>
+                    </figure>
+
+                    <!-- Post content-->
+                    <section class="mb-5">
+                        <p class="fs-5 mb-4"><b>Docker</b> is an open-source project that automates the deployment of
+                            software
+                            applications inside containers by providing an additional layer of abstraction and
+                            automation of OS-level virtualization on Linux. </p>
+                        <p class="fs-5 mb-4">The key benefit of Docker is that it allows users to package an application
+                            with all of its dependencies into a standardized unit for software development. Unlike
+                            virtual machines, containers do not have high overhead and hence enable more efficient usage
+                            of the underlying system and resources.
+                        </p>
+
+                        <h2 class="fw-bolder mb-4 mt-5">What is Containers? </h2>
+                        <p class="fs-5 mb-4">Containers are lightweight and contain everything needed to run the
+                            application, so you do not need to rely on what is currently installed on the host. You can
+                            easily share containers while you work, and be sure that everyone you share with gets the
+                            same container that works in the same way. </p>
+                        <p class="fs-5 mb-4">A container:</p>
+                        <ul class="fs-5 mb-4">
+                            <li>is a runnable instance of an image. You can create, start, stop, move, or delete a
+                                container using the DockerAPI or CLI.
+                            </li>
+                            <li>is portable & can be run on local machines, virtual machines or deployed to the cloud.
+                            </li>
+                            <li>Containers are isolated from each other and run their own software, binaries, and
+                                configurations.
+                            </li>
+                        </ul>
+                        <h2 class="fw-bolder mb-4 mt-5">Container Image</h2>
+                        <p class="fs-5 mb-4">
+                            When a container is running, it makes use of an isolated filesystem. A container image
+                            provides this custom filesystem. Because the image contains the filesystem of the container,
+                            it must have everything required to run an application, including all dependencies,
+                            configuration, scripts, binaries, and so on.</p>
+
+                        <h4 class="fw-bolder mb-4 mt-5">Build the app's Container Image</h4>
+                        <p class="fs-5 mb-4">
+                            In order to build the application, we need to use a Dockerfile.
+                            A Dockerfile is simply a text-based script of instructions that is used to create a
+                            container image. Dockerfile has no file extension like .txt.
+                        </p>
+                        <ol class="fs-5 mb-2">
+                            <li>Create a file named Dockerfile in the same folder as the file package.json with the
+                                following contents.
+                            </li>
+                            <pre class="highlight"><code><span class="c"># syntax=docker/dockerfile:1</span>
+<span class="k" data-original-title="" title="">FROM</span><span class="s"> node:12-alpine</span>
+<span class="k" data-original-title="" title="">RUN </span>apk add <span class="nt">--no-cache</span> python2 g++ make
+<span class="k" data-original-title="" title="">WORKDIR</span><span class="s"> /app</span>
+<span class="k" data-original-title="" title="" style="cursor: help;">COPY</span><span class="s"> . .</span>
+<span class="k" data-original-title="" title="">RUN </span>yarn install <span class="nt">--production</span>
+<span class="k" data-original-title="" title="">CMD</span><span class="s"> ["node", "src/index.js"]</span>
+<span class="k" data-original-title="" title="">EXPOSE</span><span class="s"> 3000</span>
+</code></pre>
+                            <li>Open a terminal and go to the app directory with the Dockerfile. Now build the container
+                                image using the docker build command.<br>(Note: The . at the end of the docker build
+                                command tells that Docker should
+                                look for the Dockerfile in the current directory.)
+                            </li>
+
+                            <pre>
+                                <code class="con"> $ docker build -t getting-started .</code>
+                            </pre>
+                        </ol>
+
+                        <h4 class="fw-bolder mb-4 mt-5">Start an app container</h4>
+                        <ol class="fs-5 mb-2">
+                            <li>Start your container using the docker run command and specify the name of the image
+                                created:
+                            </li>
+                            <pre>
+                                <code class="con"> $docker run -dp 3000:3000 getting-started</code>
+                            </pre>
+                            <li>After a few seconds, open your web browser to http://localhost:3000. You should see your
+                                app.
+                            </li>
+                        </ol>
+
+                        <h4 class="fw-bolder mb-4 mt-5">Replace the old container</h4>
+                        <p class="fs-5 mb-4">To remove a container, it first needs to be stopped. Once it has stopped, it can be removed.
+                            We have two ways that we can remove the old container. We can directly remove a
+                            container using the Docker dashboard by clicking on the trash can icon.
+                            <br>Remove a container using the CLI:
+                        </p>
+                        <ol class="fs-5 mb-2">
+                            <li>Get the ID of the container by using the docker ps command.</li>
+                            <pre><code class="con">$docker ps</code></pre>
+                            <li>Use the docker stop command to stop the container.</li>
+                            <pre><code class="con">#Swap out 'the-container-id' with the ID from docker ps <br>$docker stop 'the-container-id'</code>
+                            </pre>
+                            <li>Once the container has stopped, you can remove it by using the docker rm command.</li>
+                            <pre><code class="con">$docker rm 'the-container-id' </code></pre>
+                        </ol>
+
+
+                        <h4 class="fw-bolder mb-4 mt-5">Share The application </h4>
+                        <p class="fs-5 mb-4">To share Docker images, we have to use a Docker registry. The default
+                            registry is Docker Hub.
+                            <br>A Docker Id allows us to access Docker Hub. We have to create one from here :
+                            <a href="https://hub.docker.com/signup" target="_blank">https://hub.docker.com/signup</a>
+                        </p>
+                        <h5 class="fw-bolder mb-4 mt-5">Create a Repository on Docker hub:</h5>
+                        <ol class="fs-5 mb-2">
+                            <li>Sign up or Sign in to Docker Hub.</li>
+                            <li>Click the Create Repository button.</li>
+                            <li>For the repo name, use getting-started. Make sure the Visibility is Public.</li>
+                            <li>Click on Create button.</li>
+                        </ol>
+                        <h5 class="fw-bolder mb-4 mt-5"> Push the application</h5>
+                        <p class="fs-5 mb-4">To push an application,first, we need to tag our existing image that we've
+                            built to give it to another name, to do so:
+                        </p>
+                        <ol class="fs-5 mb-2">
+                            <li>Login to the Docker Hub using the command :</li>
+                            <pre><code class="con">$docker login -u YOUR-USER-NAME</code></pre>
+                            <li>Use the docker tag command to give the getting-started image a new name.</li>
+                            <pre><code
+                                    class="con">$docker tag getting-started YOUR-USER-NAME/getting-started</code></pre>
+                            <li>Push the application using below command. If you don’t specify a tag, Docker will use a
+                                tag called latest.
+                                <pre><code class="con">$docker push YOUR-USER-NAME/getting-started</code></pre>
+                        </ol>
+
+                    </section>
+                </article>
+            </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+                <!-- Url widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Useful Links</div>
+                    <div class="card-body">
+                        <div class="row">
+
+                                <ul class="list-unstyled mb-0 fs-5">
+                                    <li><a href="https://docs.docker.com/get-docker/" target="_blank">Get Docker</a></li>
+                                    <li><a href="https://docs.docker.com/get-started/" target="_blank">Docker Getting Started</a></li>
+                                    <li><a href="https://www.ibm.com/cloud/learn/containerization" target="_blank">What is Containerization?</a></li>
+                                </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">My Docker hub Repo</div>
+                    <div class="card-body">
+                        <p class="fs-5">Link to my Project repo: <a class="fs-5" href="https://hub.docker.com/repository/docker/ku137/project1/general" target="_blank">My DockerHub Repo</a>
+                        <br>Command to pull my container's image:<br>
+                            $docker pull ku137/project1</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+{% endblock %}

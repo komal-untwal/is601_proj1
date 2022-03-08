@@ -1,3 +1,65 @@
 body {
 font-size: 200%;
 }
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  width: 100%;
+  padding-right: 2%;
+  padding-left: 2%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+pre, code {
+    background-color: #f5f8fa !important;
+    color: #0c5176 !important;
+}
+
+.con {
+  display: block;
+  overflow-x: auto;
+  background: #000;
+  color: #eaeaea;
+  padding: 0.5em;
+}
+.highlight .k {
+    color: #8B008B;
+}
+.highlight .nt {
+    color: #8B008B;
+}
+.highlight .s {
+    color: #CD5555;
+}
+
+.py-5 {
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1rem 1rem;
+}
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}

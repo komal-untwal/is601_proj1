@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Page content-->
+    <div class="container mt-3 ml-2">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Post content-->
+                <article>
+                    <!-- Post header-->
+                    <header class="mb-4">
+                        <!-- Post title-->
+                        <h1 class="fw-bolder mb-1">Git : Basic Manual</h1>
+                        <!-- Post meta content
+                        <div class="text-muted fst-italic mb-2">Posted on January 1, 2021 by Start Bootstrap</div>
+
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
+                    </header>
+                    <!-- Preview image figure-->
+                    <figure class="mb-4"><img class="img-fluid rounded"
+                                              src="{{ url_for('static', filename='images/git2.jpg') }}"
+                                              style="width:900px;height:400px" alt="..."/>
+                    </figure>
+                    <!-- Post content-->
+                    <section class="mb-5">
+                        <p class="fs-5 mb-4">Git is a free and open-source version control system, originally created by
+                            Linus Torvalds in 2005. Unlike prior centralized version control systems like SVN and CVS,
+                            Git is distributed, which means that each developer has a local copy of their code
+                            repository's whole history. This slows down the first clone of the repository, but it speeds
+                            up subsequent actions like commit, blame, diff, merge, and log. </p>
+                        <p class="fs-5 mb-4">Git also provides strong branching, merging, and rewriting repository
+                            history functionality, resulting in a plethora of unique and powerful workflows and tools.
+                            Pull requests are a common mechanism for collaborating on Git branches and effectively
+                            reviewing each other's code. Git is the most extensively used version control system in the
+                            world today, and it is largely regarded as the modern standard for Software Development.</p>
+
+                        <h2 class="fw-bolder mb-4 mt-5">How Git works? </h2>
+                        <p class="fs-5 mb-4">Here is the basic flow of how git works: </p>
+                        <ol class="fs-4">
+                            <li>Create a "repository" (project) on gitHub.</li>
+                            <li>Copy (or clone) the repository to your local machine</li>
+                            <li>Add a file to your local repo and "commit" (save) the changes.</li>
+                            <li>"Push" your changes to your main branch.</li>
+                            <li>Make a change to your file and commit.</li>
+                            <li>"Pull" the changes to your local machine.</li>
+                            <li>Create a "branch" (version), make a change, commit the change.</li>
+                            <li>Open a "pull request" (propose changes to the main branch).</li>
+                            <li>"Merge" your branch to the main branch.</li>
+                        </ol>
+
+                        <h2 class="fw-bolder mb-4 mt-5">Git Commands: </h2>
+                        <p class="fs-5 mb-4">Below are the most important and commonly used Git commands:</p>
+
+                        <h3 class="fw-bolder mb-2 mt-3">Git SetUp & Init</h3>
+                        <ul class="fs-4">
+                            <li><i class="fs-5">git init :</i> initialize an existing directory as a Git repository</li>
+                            <li><i class="fs-5">git clone [url] :</i> retrieve an entire repository from a hosted
+                                location via URL
+                            </li>
+                        </ul>
+                        <h3 class="fw-bolder mb-2 mt-3">Git Staging </h3>
+                        <ul class="fs-4">
+                            <li><i class="fs-5">git status :</i> show modified files in working directory, staged for
+                                your next commit
+                            </li>
+                            <li><i class="fs-5">git add [file] :</i> add a file as it looks now to your next commit
+                                (stage)
+                            </li>
+                            <li><i class="fs-5">git reset [file] :</i> unstage a file while retaining the changes in
+                                working directory
+                            </li>
+                            <li><i class="fs-5">git commit -m “[descriptive message]”</i> commit your staged content as
+                                a new commit snapshot
+                            </li>
+                        </ul>
+                        <h3 class="fw-bolder mb-2 mt-3">Git Branches </h3>
+                        <ul class="fs-4">
+                            <li><i class="fs-5">git branch :</i> list your branches. (Note: a * will appear next to the
+                                currently active branch)
+                            </li>
+                            <li><i class="fs-5">git branch [branch-name] :</i> create a new branch at the current commit
+                            </li>
+                            <li><i class="fs-5">git checkout :</i> switch to another branch and check it out into your
+                                working directory
+                            </li>
+                            <li><i class="fs-5">git merge [branch] :</i> merge the specified branch’s history into the
+                                current one
+                            </li>
+                        </ul>
+                        <h3 class="fw-bolder mb-2 mt-3">Git Share & Update </h3>
+                        <ul class="fs-4">
+                            <li><i class="fs-5">git remote add [alias] [url] :</i> add a git URL as an alias</li>
+                            <li><i class="fs-5">git fetch [alias] :</i>fetch down all the branches from that Git remote
+                            </li>
+                            <li><i class="fs-5">git merge [alias]/[branch] :</i> merge a remote branch into your current
+                                branch to bring it up to date
+                            </li>
+                            <li><i class="fs-5">git push [alias] [branch] :</i> Transmit local branch commits to the
+                                remote repository branch
+                            </li>
+                            <li><i class="fs-5">git pull :</i>fetch and merge any commits from the tracking remote
+                                branch
+                            </li>
+                        </ul>
+
+                        <h3 class="fw-bolder mb-2 mt-3">Git Stash </h3>
+                        <ul class="fs-4">
+                            <li><i class="fs-5">git stash :</i> Save modified and staged changes</li>
+                            <li><i class="fs-5">git stash list :</i>list stack-order of stashed file changes</li>
+                            <li><i class="fs-5">git stash pop :</i> write working from top of stash stack</li>
+                            <li><i class="fs-5">git stash drop :</i> discard the changes from top of stash stack</li>
+                        </ul>
+                    </section>
+                </article>
+                </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+                <!-- Search widget-->
+                <!-- url widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Useful Links</div>
+                    <div class="card-body">
+                        <div class="row">
+
+                                <ul class="list-unstyled mb-0">
+                                    <li><a href="https://git-scm.com/about" target="_blank">About Git</a></li>
+                                    <li><a href="https://git-scm.com/downloads" target="_blank">Git Downloads</a></li>
+                                    <li><a href="https://git-scm.com/doc" target="_blank">Git Documentation</a></li>
+                                    <li><a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank">Git CheatSheet</a></li>
+                                    <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+                                </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">My GitHub Repository</div>
+                    <div class="card-body">
+                        <li><a href="https://github.com/komal-untwal?tab=repositories" target="_blank">GitHub Repo: Komal Untwal</a></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+{% endblock %}
