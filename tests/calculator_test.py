@@ -1,35 +1,31 @@
 """Testing the Calculator"""
+# From specifies the namespace
 from calculator import Calculator
 
 
-def test_calculator_is_instance():
-    """Testing the Calculator"""
-    calculator = Calculator()
-    assert isinstance(calculator, Calculator)
-
-
-def test_calculator_get_result_method():
-    """Testing the Calculator"""
-    calculator = Calculator()
-    assert calculator.get_result() == 0
-
-
-def test_calculator_result_property():
-    """Testing the Calculator"""
-    calc1 = Calculator()
-    calc2 = Calculator()
-    calc1.result = 5
-    calc2.result = 6
-    assert calc1.result == 5
-    assert calc2.result == 6
+def tuple_list():
+    """Arranging Data for AAA Testing"""
+    return 1.0, 2
 
 
 def test_calculator_add_method():
-    """Testing the Calculator"""
-    calculator = Calculator()
-    assert calculator.add(1) == 1
+    """Testing the Calculator add"""
+    # this is show using the calculator object add method
+
+    # Act for AAA testing
+    result_add = Calculator.add(tuple_list())
+
+    # Assertion for AAA testing
+    assert result_add == 3
+
 
 def test_calculator_subtract_method():
     """Testing the Calculator Subtract"""
-    calculator = Calculator()
-    assert calculator.subtract(1) == -1
+    result_sub = Calculator.subtract(tuple_list())
+    assert result_sub == -3
+
+
+def test_calculator_multiply_method():
+    """Testing the Calculator multiply"""
+    result_mult = Calculator.multiply(tuple_list())
+    assert result_mult == 2

@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+<!-- To highlight the nav menu -->
+{% block nav_aaa%}
+    class="active"
+{% endblock %}
+
+{% block content %}
+    <!-- Page content-->
+    <div class="container mt-3 ml-2">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Post content-->
+                <article>
+                    <!-- Post header-->
+                    <header class="mb-4">
+                        <!-- Post title-->
+                        <h1 class="fw-bolder mb-1">Unit Testing and the Arrange, Act and Assert (AAA) Pattern</h1>
+                        <!-- Post meta content
+                        <div class="text-muted fst-italic mb-2">Posted on January 1, 2021 by Start Bootstrap</div>
+
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
+                    </header>
+                    <!-- Preview image figure-->
+                    <figure class="mb-4"><img class="img-fluid rounded"
+                                              src="{{ url_for('static', filename='images/aaa.png') }}"
+                                              style="width:900px;height:400px" alt="..."/>
+                    </figure>
+
+                    <!-- Post content-->
+                    <section class="mb-5">
+
+                        <p class="fs-5 mb-4">A <b>test</b> is a procedure that exercises a behavior to determine if the
+                            behavior functions correctly. There are several different kinds of tests, like unit tests,
+                            integration tests, or end-to-end tests, but all functional tests do the same basic thing
+                            they try some
+                        </p>
+
+                         <h3 class="fw-bolder mt-3">Why Testing is important?</h3>
+                        <p class="fs-5 mb-4">
+                            <b>Testing your code</b> increases your confidence that the code behaves as you expect and ensures that changes to your code won’t cause regressions.
+                            Automated unit tests reduce the number of bugs released in the production.
+                            The best unit testing will come from a developer very close to the project.
+                            It can often be a good way for new developers on the project to get to know code if it was written by someone else.
+                        </p>
+
+                         <p class="fs-5 mb-4">
+                        So, if we intend to spend time writing tests, how can we write good tests? There’s a simple but powerful pattern to follow: <b>Arrange-Act-Assert</b>.
+                         </p>
+
+                        <h3 class="fw-bolder mt-3">AAA Testing Pattern</h3>
+                        <p class="fs-5 mb-4">Arrange-Act-Assert is a great way to structure test cases. It prescribes an
+                            order of operations as follow:
+                        <ul class="fs-5 mb-2">
+                            <li><b>Arrange</b> inputs and targets. Arrange steps should set up the test case. Does the
+                                test require any objects or special settings? Does it need to prep a database? Does it
+                                need to log into a web app? Handle all of these operations at the start of the test.
+                            </li>
+                            <li>Act on the target behavior. Act steps should cover the main thing to be tested. This
+                                could be calling a function or method, or interacting with a web page. Keep actions
+                                focused on the target behavior.
+                            </li>
+                            <li>Assert expected outcomes. Act steps should elicit some sort of response. Assert steps
+                                verify the goodness or badness of that response. Sometimes, assertions are as simple as
+                                checking numeric or string values. Other times, they may require checking multiple
+                                facets of a system. Assertions will ultimately determine if the test passes or fails
+                            </li>
+                        </ul>
+                        </p>
+
+                        <p class="fs-5 mb-4"> Example illustration of AAA testing pattern in my Calculation class:</p>
+                        <p class="fs-5 mb-4">
+                        <pre class="highlight fs-5 mb-2">
+ <code>
+  <span class="k" data-original-title="" title="">def</span><span class="s"> tuple_list():</span>
+     <span class="c"> """Arranging Data for AAA Testing"""</span>
+     return 1.0, 2
+
+  <span class="k" data-original-title="" title="">def</span><span class="s"> test_calculator_add_method():</span>
+     <span class="c"> """Testing the Calculator add"""</span>
+
+     # Act for AAA testing
+     result_add = Calculator.add(tuple_list())
+
+     # Assertion for AAA testing
+     <span class="k" data-original-title="" title="">assert</span> result_add == 3
+ </code></pre>
+                        </p>
+
+                        <p class="fs-5 mb-4"> As illustrated above, I've structured my test case for addition
+                            calculation as follow:
+                        <ol class="fs-5 mb-2">
+                            <li>The <i>Arrange</i> step creates a tuple list to be passed a parameter to the add
+                                function.
+                            </li>
+                            <li>The <i>Act</i> step call the "add" method from the calculator class using the
+                                "tuple_list()" function call and stores the returned value in a variable named
+                                "result_add".
+                            </li>
+                            <li>The <i>Assert</i> step verifies that the value of the "result_add" is equals to "3".
+                            </li>
+                        </ol>
+                        </p>
+
+                        <h4 class="fw-bolder mt-4">In Summary:</h4>
+                        <p class="fs-5 mb-4">
+                            Arrange-Act-Assert is powerful because it is simple. It forces tests to focus on
+                            independent, individual behaviors. It separates setup actions from the main actions. It
+                            requires test to make verifications and not merely run through motions.
+                        </p>
+
+                    </section>
+                </article>
+            </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+                <!-- Url widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Useful Links</div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <ul class="list-unstyled mb-0 fs-5">
+                                <li><a href="https://www.tutorialspoint.com/pytest/index.htm"
+                                       target="_blank">Pytest Tutorial</a></li>
+                                <li><a href="https://performancelabus.com/unit-testing-importance/"
+                                       target="_blank">Unit testing</a></li>
+                                <li><a href="https://automationpanda.com/2020/07/07/arrange-act-assert-a-pattern-for-writing-good-tests/" target="_blank">
+                                   AAA Testing</a></li>
+                                <li><a href="https://circleci.com/blog/testing-flask-framework-with-pytest/"
+                                       target="_blank">Testing Flask with Pytest</a></li>
+                                <li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">My Calculator Project</div>
+                    <div class="card-body">
+                        <a class="fs-5" href="https://github.com/komal-untwal/is601_proj1" target="_blank">https://github.com/komal-untwal/is601_proj1</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+{% endblock %}

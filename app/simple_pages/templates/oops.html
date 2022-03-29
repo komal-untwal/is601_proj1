@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+
+<!-- To highlight the nav menu -->
+{% block nav_oops%}
+    class="active"
+{% endblock %}
+
+{% block content %}
+    <!-- Page content-->
+    <div class="container mt-3 ml-2">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Post content-->
+                <article>
+                    <!-- Post header-->
+                    <header class="mb-4">
+                        <!-- Post title-->
+                        <h1 class="fw-bolder mb-1">The 4 pillars of Object-Oriented Programming</h1>
+                        <!-- Post meta content
+                        <div class="text-muted fst-italic mb-2">Posted on January 1, 2021 by Start Bootstrap</div>
+
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
+                    </header>
+                    <!-- Preview image figure-->
+                    <figure class="mb-4"><img class="img-fluid rounded"
+                                              src="{{ url_for('static', filename='images/oops.png') }}"
+                                              style="width:900px;height:400px" alt="..."/>
+                    </figure>
+
+                    <!-- Post content-->
+                    <section class="mb-5">
+
+                        <p class="fs-5 mb-4"><b>Abstraction, Encapsulation, Inheritance, Polymorphism</b> are the “four
+                            pillars” of Object-Oriented Programming.
+                            We will go over a brief explanation of each in Python, and illustrate how I implemented
+                            these principles in my Calculator program.
+                        </p>
+
+                        <!-- ************ Encapsulation ***************** -->
+
+
+                        <h3 class="fw-bolder mb-4 mt-5">Encapsulation</h3>
+                        <p class="fs-5 mb-4">Encapsulation is one of the fundamental concepts in object-oriented
+                            programming (OOP).
+                            It describes the idea of wrapping data and the methods that work on data within one unit.
+                            This puts restrictions on accessing variables and methods directly and can prevent the
+                            accidental modification of data.
+                            To prevent accidental change, an object’s variable can only be changed by an object’s
+                            method.
+                            Those types of variables are known as private variables.
+                            When I encapsulate something in my code, I am taking caution to not let
+                            outside effects impact that code. When I adhere to this principle, it makes my code more
+                            predictable, and not as vulnerable to bugs.<br><br>
+
+                            A <b>class</b> is an example of encapsulation as it encapsulates all the data that is member
+                            functions, variables, etc.
+                            <br><br>
+
+                            Illustration of Encapsulation in my calculator program:
+
+                        <pre class="highlight fs-5 mb-4"><code>
+  <span class="k" data-original-title="" title="">class</span><span class="s"> Calculations:</span>
+    <span class="g"> """Calculations class manages the history of calculations"""</span>
+    history = []
+
+    <span class="o" data-original-title="" title="">@staticmethod</span>
+    <span class="k" data-original-title="" title="">def</span> <span class="s">clear_history():</span>
+          <span class="g"> """clear the history of calculations"""</span>
+          Calculations.history.clear()
+          <span class="k" data-original-title="" title="">return True</span>
+                            </code></pre>
+
+                        </p>
+                        <p class="fs-5 mb-4"> In the above example, We have created a 'history' list to store the
+                            calculation history, which we are accessing it in the clear_history() method of
+                            the calculation class. Thus, to access the attribute of the calculation class, we need to
+                            instantiate the Calculations class' object, then only by calling the clear_history() method
+                            of the Calculation class using its instantiated object, we can access the history attribute
+                            of the class. This is the simple example of the encapsulation of attribute & methods inside
+                            the class. Similar approach is used throughout the calculator program to achieve abstraction
+                            at every level possible.
+
+                        </p>
+
+                        <!-- ************ Inheritance ***************** -->
+
+
+                        <h3 class="fw-bolder mb-4 mt-5">Inheritance</h3>
+                        <p class="fs-5 mb-4">Inheritance is the capability of one class to derive or inherit the
+                            properties from another class. The class that derives properties is called the derived class
+                            or child class and the class from which the properties are being derived is called the base
+                            class or parent class. The benefits of inheritance are:
+                        <ul class="fs-5 mb-2">
+                            <li>It represents real-world relationships well.</li>
+                            <li>It provides the reusability of a code. Also, it allows us to add more features to a
+                                class without modifying it.
+                            </li>
+                            <li>It is transitive in nature, which means that if class B inherits from another class A,
+                                then all the subclasses of B would automatically inherit from class A.
+                            </li>
+                        </ul>
+
+                        Illustration of Inheritance in my calculator program:
+
+                        <pre class="highlight fs-5 mb-4"><code>
+  <span class="g">#Parent Class</span>
+  <span class="k" data-original-title="" title="">class</span> Calculation:
+          <span class="g"> """ calculation abstract base class"""</span>
+
+          <span class="k" data-original-title="" title="">def</span> <span class="p">__init__</span>(<span class="s" data-original-title="" title="">self</span>, tuple_list: tuple):
+                <span class="g"> """ constructor method"""</span>
+                <span class="s" data-original-title="" title="">self</span>.values = Calculation.convert_args_to_tuple_of_float(tuple_list)
+
+          <span class="o" data-original-title="" title="">@classmethod</span>
+          <span class="k" data-original-title="" title="">def</span> <span class="s">create</span>(<span class="s" data-original-title="" title="">cls</span>, tuple_list: tuple):
+                 <span class="g"> """ factory method"""</span>
+                 <span class="k" data-original-title="" title="">return</span> <span class="s" data-original-title="" title="">cls</span>(tuple_list)
+
+          <span class="o" data-original-title="" title="">@staticmethod</span>
+          <span class="k" data-original-title="" title="">def</span> <span class="s">convert_args_to_tuple_of_float</span>(tuple_list):
+                 <span class="g"> """ standardize values to list of floats"""</span>
+                 list_values_float = []
+                 <span class="k" data-original-title="" title="">for</span> item <span class="k" data-original-title="" title="">in</span> tuple_list:
+                       list_values_float.append(float(item))
+                 <span class="k" data-original-title="" title="">return</span> tuple(list_values_float)
+
+
+  <span class="g">#Child class</span>
+  <span class="k" data-original-title="" title="">class</span> Addition(Calculation):
+         <span class="g"> """ calculation addition class"""</span>
+
+          <span class="k" data-original-title="" title="">def</span> <span class="s">get_result</span>(<span class="s" data-original-title="" title="">self</span>):
+                <span class="g"> """get the addition results"""</span>
+                sum_of_values = 0.0
+                <span class="k" data-original-title="" title="">for</span> value <span class="k" data-original-title="" title="">in</span> self.values:
+                      sum_of_values = Add.add(value, sum_of_values)
+                <span class="k" data-original-title="" title="">return</span> sum_of_values
+
+                  </code></pre>
+                        </p>
+
+                        <p class="fs-5 mb-4">
+                            In the above example, we have created two classes i.e. Calculation (parent class) and Addition (Child Class).
+                            The Addition class inherits from the Calculation class. We can use the methods of the Calculation class through Addition class as seen in the get_result() function in the above code.
+                            A child class can also modify the behavior of the parent class.
+                        </p>
+
+                        <!-- ************ Polymorphism ***************** -->
+
+                        <h3 class="fw-bolder mb-4 mt-5">Polymorphism</h3>
+                        <p class="fs-5 mb-4">Polymorphism simply means having many forms. In programming, polymorphism
+                            means the same function name (but different signatures) being used for different types.
+                            <br>Examples of user-defined polymorphic function in my calculator program :
+
+                        <pre class="highlight fs-5 mb-4"><code>
+  <span class="k" data-original-title="" title="">class</span> Addition(Calculation):
+         <span class="g"> """ calculation addition class"""</span>
+
+          <span class="k" data-original-title="" title="">def</span> <span class="s">get_result</span>(<span class="s"
+                                                                                                             data-original-title=""
+                                                                                                             title="">self</span>):
+                <span class="g"> """get the addition results"""</span>
+                sum_of_values = 0.0
+                <span class="k" data-original-title="" title="">for</span> value <span class="k" data-original-title=""
+                                                                                       title="">in</span> self.values:
+                      sum_of_values = Add.add(value, sum_of_values)
+                <span class="k" data-original-title="" title="">return</span> sum_of_values
+
+  <span class="k" data-original-title="" title="">class</span> Multiplication(Calculation):
+         <span class="g"> """ calculation Multiplication class"""</span>
+
+          <span class="k" data-original-title="" title="">def</span> <span class="s">get_result</span>(<span class="s"
+                                                                                                             data-original-title=""
+                                                                                                             title="">self</span>):
+                <span class="g"> """get the addition results"""</span>
+                result = 1.0
+                <span class="k" data-original-title="" title="">for</span> value <span class="k" data-original-title=""
+                                                                                       title="">in</span> self.values:
+                      result = Add.add(value, result)
+                <span class="k" data-original-title="" title="">return</span> result
+
+                    </code></pre>
+                        </p>
+
+                        <p class="fs-5 mb-4"> As shown in the above example, we are using a function with the same name
+                            get_result() in both addition, & multiplication classes. get_result() function in addition
+                            class, which inherits the Calculation class, is responsible to add two numbers. Whereas, the
+                            get_result() in Multiplication class, which also inherits Calculation class, is responsible
+                            to perform multiplication of two numbers.
+                            In this way, Python can use two different class types, in the same way.
+                        </p>
+
+                        <!-- ************ Abstraction ***************** -->
+
+                        <h3 class="fw-bolder mb-4 mt-5">Abstraction</h3>
+                        <p class="fs-5 mb-4">Abstraction in Python is the process of hiding the real implementation of
+                            an application from the user and emphasizing only how to use the application.
+                            We use Abstraction for hiding the internal details or implementations of a function and
+                            showing its functionalities only. Inheritance is used to achieve abstraction.<br>
+                            Let's look an example of abstract class in python:
+
+                        <ul class="fs-5 mb-2">
+                            <li>1. operations/__init__.py</li>
+
+                            <pre class="highlight fs-5 mb-4"><code>
+  <span class="k" data-original-title="" title="">class</span><span class="s"> Addition:</span>
+    <span class="g"> """ This is the addition class""" </span>
+
+    <span class="o" data-original-title="" title="">@staticmethod</span>
+    <span class="k" data-original-title="" title="">def</span> <span class="s">add</span>(value_1, value_2):
+          <span class="g"> """ This is the add method"""</span>
+
+          <span class="k" data-original-title="" title="">return </span>value_1 + value_2
+                            </code></pre>
+
+
+                            <li>2. calculations/__init__.py</li>
+
+                            <pre class="highlight fs-5 mb-4"><code>
+  <span class="g">#Parent Class</span>
+  <span class="k" data-original-title="" title="">class</span> Calculation:
+          <span class="g"> """ calculation abstract base class"""</span>
+
+          <span class="k" data-original-title="" title="">def</span> <span class="p">__init__</span>(<span class="s"
+                                                                                                           data-original-title=""
+                                                                                                           title="">self</span>, tuple_list: tuple):
+                <span class="g"> """ constructor method"""</span>
+                <span class="s" data-original-title="" title="">self</span>.values = Calculation.convert_args_to_tuple_of_float(tuple_list)
+
+          <span class="o" data-original-title="" title="">@classmethod</span>
+          <span class="k" data-original-title="" title="">def</span> <span class="s">create</span>(<span class="s"
+                                                                                                         data-original-title=""
+                                                                                                         title="">cls</span>, tuple_list: tuple):
+                 <span class="g"> """ factory method"""</span>
+                 <span class="k" data-original-title="" title="">return</span> <span class="s" data-original-title=""
+                                                                                     title="">cls</span>(tuple_list)
+
+          <span class="o" data-original-title="" title="">@staticmethod</span>
+          <span class="k" data-original-title="" title="">def</span> <span
+                                    class="s">convert_args_to_tuple_of_float</span>(tuple_list):
+                 <span class="g"> """ standardize values to list of floats"""</span>
+                 list_values_float = []
+                 <span class="k" data-original-title="" title="">for</span> item <span class="k" data-original-title=""
+                                                                                       title="">in</span> tuple_list:
+                       list_values_float.append(float(item))
+                 <span class="k" data-original-title="" title="">return</span> tuple(list_values_float)
+
+
+  <span class="g">#Child class</span>
+  <span class="k" data-original-title="" title="">class</span> Addition(Calculation):
+         <span class="g"> """ calculation addition class"""</span>
+
+          <span class="k" data-original-title="" title="">def</span> <span class="s">get_result</span>(<span class="s"
+                                                                                                             data-original-title=""
+                                                                                                             title="">self</span>):
+                <span class="g"> """get the addition results"""</span>
+                sum_of_values = 0.0
+                <span class="k" data-original-title="" title="">for</span> value <span class="k" data-original-title=""
+                                                                                       title="">in</span> self.values:
+                      sum_of_values = Add.add(value, sum_of_values)
+                <span class="k" data-original-title="" title="">return</span> sum_of_values
+
+                  </code></pre>
+
+                        </ul>
+
+                        </p>
+
+                        <p class="fs-5 mb-4"> In the above example, We know for addition operation, we need two values
+                            to be added, but we don’t care which two values should be passed & how it should be passed.
+                            By enforcing the standard that an Addition class of the 'operations' namespace will have an
+                            add method, which will add two values passed to it & return the addition result, and leaving
+                            the implementation up to the child class, we are abstracting away the details and just
+                            focusing on how Addition is performed. We leave the implementation of it to the child class.
+                            The child class in the 'calculations' namespace, takes care of passing the parameter values
+                            to the add() function, which will then simply add the values.
+
+                        </p>
+
+
+
+                    </section>
+                </article>
+            </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+                <!-- Url widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Useful Links</div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <ul class="list-unstyled mb-0 fs-5">
+                                <li><a href="https://www.analyticsvidhya.com/blog/2020/09/object-oriented-programming/"
+                                       target="_blank">OOP Basics</a></li>
+                                <li><a href="https://www.analyticsvidhya.com/blog/2020/10/inheritance-object-oriented-programming/" target="_blank"> What is Inheritance?</a></li>
+                                <li><a href="https://www.mygreatlearning.com/blog/abstraction-in-python/"
+                                       target="_blank">What is Abstraction?</a></li>
+                                <li><a href="https://www.geeksforgeeks.org/polymorphism-in-python/"
+                                       target="_blank">What is Polymorphism?</a></li>
+                                <li><a href="https://www.geeksforgeeks.org/encapsulation-in-python/"
+                                       target="_blank">What is Encapsulation?</a></li>
+                                <li><a href=https://www.mygreatlearning.com/blog/oops-interview-questions/
+                                       target="_blank">OOPS interview prep material</a></li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">My Calculator Project</div>
+                    <div class="card-body">
+                        <a class="fs-5" href="https://github.com/komal-untwal/is601_proj1" target="_blank">https://github.com/komal-untwal/is601_proj1</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+{% endblock %}
