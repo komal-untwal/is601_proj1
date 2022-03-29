@@ -1,8 +1,13 @@
 {% extends "base.html" %}
+<!-- To highlight the nav menu -->
+{% block nav_index%}
+    class="active"
+{% endblock %}
+
 {% block content %}
     <div class="container mb-4">
         <div class="row mb-5">
-            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide item-list" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
                             aria-current="true" aria-label="Slide 1"></button>
@@ -12,15 +17,22 @@
                             aria-label="Slide 3"></button>
                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3"
                             aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5"
+                            aria-label="Slide 6"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="6"
+                            aria-label="Slide 7"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="7"
+                            aria-label="Slide 8"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="10000">
                         <a href="{{ url_for('simple_pages.show', page="git") }}">
-                            <img src="{{ url_for('static', filename='images/git.webp') }}" class="d-block mw-100"
+                            <img src="{{ url_for('static', filename='images/git_c.jpg') }}" class="d-block mw-100"
                                  style="width:3600px;height:500px" alt="Click here for Git Manual.">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>GIT</h5>
-                                <p>Click here for Git Manual.</p>
+
                             </div>
                         </a>
                     </div>
@@ -29,28 +41,56 @@
                             <img src="{{ url_for('static', filename='images/docker.png') }}" class="d-block w-100"
                                  style="width:3600px;height:500px" alt="Click here for Docker Manual.">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>Docker</h5>
-                                <p>Click here for Docker Manual.</p>
+
                             </div>
                         </a>
                     </div>
                     <div class="carousel-item" data-bs-interval="2000">
                         <a href="{{ url_for('simple_pages.show', page="flask") }}">
-                            <img src="{{ url_for('static', filename='images/flask2.jpg') }}" class="d-block w-100"
+                            <img src="{{ url_for('static', filename='images/flask_c.png') }}" class="d-block w-100"
                                  style="width:3600px;height:500px" alt="Click here for Python Flask Manual.">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>Flask</h5>
-                                <p>Click here for Python Flask Manual.</p>
-                            </div>
+
                         </a>
                     </div>
-                    <div class="carousel-item">
+
+                    <div class="carousel-item" data-bs-interval="2000">
                         <a href="{{ url_for('simple_pages.show', page="cicd") }}">
-                            <img src="{{ url_for('static', filename='images/devopscicd.png') }}" class="d-block w-100"
+                            <img src="{{ url_for('static', filename='images/cicd_c.jpg') }}" class="d-block w-100"
                                  style="width:3600px;height:500px" alt="Click here for CI/Cd Manual.">
+
+                        </a>
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <a href="{{ url_for('simple_pages.show', page="oop_glossary") }}">
+                            <img src="{{ url_for('static', filename='images/glossary_c.webp') }}" class="d-block w-100"
+                                 style="width:3600px;height:500px" alt="Click here for OOP Glossary Manual.">
+
+                        </a>
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <a href="{{ url_for('simple_pages.show', page="oops") }}">
+                            <img src="{{ url_for('static', filename='images/oops_c.png') }}" class="d-block w-100"
+                                 style="width:3600px;height:500px" alt="Click here for OOOPs Manual.">
+
+                        </a>
+                    </div>
+
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <a href="{{ url_for('simple_pages.show', page="solid") }}">
+                            <img src="{{ url_for('static', filename='images/solid.jpg') }}" class="d-block w-100"
+                                 style="width:3600px;height:500px" alt="Click here for Solid codding pattern Manual.">
+
+                        </a>
+                    </div>
+
+                    <div class="carousel-item">
+                        <a href="{{ url_for('simple_pages.show', page="aaa_test") }}">
+                            <img src="{{ url_for('static', filename='images/aaa_c.png') }}" class="d-block w-100"
+                                 style="width:3600px;height:500px" alt="Click here for AAA testing Manual.">
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>CI/CD</h5>
-                                <p>Click here for CI/Cd Manual.</p>
+
                             </div>
                         </a>
                     </div>
@@ -72,9 +112,10 @@
                 <div class="card" style="height: 20rem;">
 
                     <div class="card-body">
-                        <h5 class="card-title">Git Tutorial</h5>
-                        <p class="card-text fs-5">Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.</p>
-                        <a href="https://www.atlassian.com/git/tutorials" target="_blank" class="btn btn-primary">Click me</a>
+                        <h4 class="card-title"><u>About me</u></h4>
+                        <p class="card-text fs-5">
+                            <br>" Hi there. I am pursuing Masters in computer science at the New Jersey Institute of Technology, with a key interest in Machine Learning & Data Science.</p>
+
                     </div>
                 </div>
             </div>
@@ -82,18 +123,22 @@
                 <div class="card" style="height: 20rem;">
 
                     <div class="card-body">
-                        <h5 class="card-title">Docker 101</h5>
-                        <p class="card-text fs-5">Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. </p>
-                        <a href="https://www.docker.com/101-tutorial" target="_blank" class="btn btn-primary">Click me</a>
+                        <h4 class="card-title"><u>My Skills</u></h4>
+                        <p class="card-text fs-5">
+                            <br>Data Structures & Algorithm, Data Analytics, Data Science, Machine Learning, Python, R, SQL, Tableau, Java, Test Automation. </p>
+
                     </div>
                 </div>
             </div>
             <div class="col-3">
                 <div class="card" style="height: 20rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Flask Tutorial</h5>
-                        <p class="card-text fs-5">Flask is a micro web framework written in Python. It has no database abstraction layer, or any other components where pre-existing third-party libraries provide common functions.</p>
-                        <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank" class="btn btn-primary">Click Me</a>
+                        <h4 class="card-title"><u>Work Experience</u></h4>
+
+                        <p class="card-text fs-5">
+                            <br>"I’m currently working as graduate research assistant @NJIT."
+                        </p>
+
                     </div>
                 </div>
             </div>
@@ -101,9 +146,17 @@
                 <div class="card" style="height: 20rem;">
 
                     <div class="card-body">
-                        <h5 class="card-title">CI/CD Tutorial</h5>
-                        <p class="card-text fs-5">CI/CD bridges the gaps between development and operation activities and teams by enforcing automation in building, testing and deployment of applications.</p>
-                        <a href="https://docs.gitlab.com/ee/ci/introduction/" target="_blank" class="btn btn-primary">Click Me</a>
+                        <h4 class="card-title"><u>Website Links</u></h4>
+                        <p class="card-text fs-5">
+                            <br>Reach out to me on
+                            <a class="fs-5" href="https://www.linkedin.com/in/komaluntwal/" target="_blank">LinkedIn</a>
+                            <br>
+
+                            <a class="fs-5" href="https://github.com/komal-untwal/" target="_blank">Github</a>
+
+
+                        </p>
+
                     </div>
                 </div>
             </div>

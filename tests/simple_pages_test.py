@@ -5,17 +5,21 @@ def test_request_main_menu_links(client):
     """This makes the index page"""
     response = client.get("/")
     assert response.status_code == 200
-    assert b'<a class="nav-link" href="/git">Git</a>' in response.data
-    assert b'<a class="nav-link" href="/docker">Docker</a>' in response.data
-    assert b'<a class="nav-link" href="/flask">Flask</a>' in response.data
-    assert b'<a class="nav-link" href="/cicd">CI/CD</a>' in response.data
+    assert b'<a  href="/git">Git</a>' in response.data
+    assert b'<a  href="/docker">Docker</a>' in response.data
+    assert b'<a  href="/flask">Flask</a>' in response.data
+    assert b'<a  href="/cicd">CI/CD</a>' in response.data
+    assert b'<a  href="/oop_glossary">OOP-Glossary</a>' in response.data
+    assert b'<a  href="/oops">OOPs</a>' in response.data
+    assert b'<a  href="/solid">Coding Principles</a>' in response.data
+    assert b'<a  href="/aaa_test">AAA Testing</a>' in response.data
 
 
 def test_request_index(client):
     """This makes the index page"""
     response = client.get("/")
     assert response.status_code == 200
-    assert b"" in response.data
+    assert b"About me" in response.data
 
 
 def test_request_git_page(client):
@@ -45,6 +49,29 @@ def test_request_cicd_page(client):
     assert response.status_code == 200
     assert b"CI/CD" in response.data
 
+def test_request_glossary_page(client):
+    """This makes the index page"""
+    response = client.get("/oop_glossary")
+    assert response.status_code == 200
+    assert b"Object Oriented Programming" in response.data
+
+def test_request_oops_page(client):
+    """This makes the index page"""
+    response = client.get("/oops")
+    assert response.status_code == 200
+    assert b"The 4 pillars of Object-Oriented Programming" in response.data
+
+def test_request_solid_page(client):
+    """This makes the index page"""
+    response = client.get("/solid")
+    assert response.status_code == 200
+    assert b"Article on SOLID Coding & Design Patterns in Python" in response.data
+
+def test_request_aaa_page(client):
+    """This makes the index page"""
+    response = client.get("/aaa_test")
+    assert response.status_code == 200
+    assert b"Unit Testing and the Arrange, Act and Assert (AAA) Pattern" in response.data
 
 def test_request_page_not_found(client):
     """This makes the index page"""
