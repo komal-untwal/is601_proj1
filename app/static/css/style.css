@@ -37,6 +37,15 @@ pre, code {
 .highlight .s {
     color: #CD5555;
 }
+.highlight .o {
+    color: orange;
+}
+.highlight .g {
+    color: green;
+}
+.highlight .p {
+    color: mediumvioletred;
+}
 
 .py-5 {
   padding-top: 3rem !important;
@@ -62,4 +71,13 @@ pre, code {
 .list-unstyled {
   padding-left: 0;
   list-style: none;
+}
+
+table,td,th{
+  border: 1px solid;
+  border-collapse: collapse;
+}
+.dsPattern
+{
+
 }

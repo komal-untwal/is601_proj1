@@ -18,28 +18,28 @@ def test_request_index(client):
     assert b"" in response.data
 
 
-def test_request_page1(client):
+def test_request_git_page(client):
     """This makes the index page"""
     response = client.get("/git")
     assert response.status_code == 200
     assert b"Git : Basic Manual" in response.data
 
 
-def test_request_page2(client):
+def test_request_docker_page(client):
     """This makes the index page"""
     response = client.get("/docker")
     assert response.status_code == 200
     assert b"Docker" in response.data
 
 
-def test_request_page3(client):
+def test_request_flask_page(client):
     """This makes the index page"""
     response = client.get("/flask")
     assert response.status_code == 200
     assert b"Flask : Web Framework" in response.data
 
 
-def test_request_page4(client):
+def test_request_cicd_page(client):
     """This makes the index page"""
     response = client.get("/cicd")
     assert response.status_code == 200

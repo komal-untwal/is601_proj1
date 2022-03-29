@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>{% extends "base.html" %}
+{% block content %}
+    <!-- Page content-->
+    <div class="container mt-3 ml-2">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Post content-->
+                <article>
+                    <!-- Post header-->
+                    <header class="mb-4">
+                        <!-- Post title-->
+                        <h1 class="fw-bolder mb-1">Object Oriented Programming</h1>
+                        <!-- Post meta content
+                        <div class="text-muted fst-italic mb-2">Posted on January 1, 2021 by Start Bootstrap</div>
+
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
+                    </header>
+                    <!-- Preview image figure-->
+                    <figure class="mb-4"><img class="img-fluid rounded"
+                                              src="{{ url_for('static', filename='images/oop.webp') }}"
+                                              style="width:900px;height:400px" alt="..."/>
+                    </figure>
+
+                    <!-- Post content-->
+                    <section class="mb-5">
+                        <p class="fs-5 mb-4"><b>Object Oriented Programming (OOP)</b> is a method of structuring a
+                            program by bundling related properties and behaviors into individual objects.
+                            For instance, an object could email with properties like a recipient list, subject, and body
+                            and behaviors like adding attachments and sending. The main concept of OOPs is to bind the data and the functions that work on that together as a single unit so that no other part of the code can access this data.
+                        </p>
+
+                        <h3 class="fw-bolder mb-4 mt-5"> Basics of OOPs concepts:</h3>
+                        <ul class="fs-5 mb-2">
+                            <li>Class</li>
+                            <li>Objects</li>
+                            <li>Instantiation</li>
+                            <li>namespaces</li>
+                            <li>Constructor</li>
+                            <li>Static property</li>
+                            <li>Static method</li>
+                            <li>Instance property</li>
+                            <li>Instance method</li>
+                            <li>Oop Principles</li>
+                            <li>SOLID principle</li>
+                            <li>Design Patterns</li>
+                            <li>Testing Basics</li>
+                        </ul>
+
+                        <h3 class="fw-bolder mt-3">Class</h3>
+                        <p class="fs-5 mb-4">
+                            A class contains the blueprints or the prototype from which the objects are being created.
+                            It is a logical entity that contains some attributes and methods.
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Object</h3>
+                        <p class="fs-5 mb-4">
+                            The object is an entity that has a state and behavior associated with it. It may be any
+                            real-world object like a pen, book, etc.
+                            Integers, strings, floating-point numbers, even arrays, and dictionaries, are all objects.
+                            <br>An object consists of :<br>
+                        <ul class="fs-5 mb-2">
+                        <li><b>State:</b> It is represented by the attributes or properties of an object.</li>
+                        <li><b>Behavior:</b> It is represented by the methods of an object.</li>
+                        <li><b>Identity:</b> It gives a unique name to an object and enables one object to interact with other objects.</li>
+                        </ul>
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Instantiation</h3>
+                        <p class="fs-5 mb-4">
+                            Instantiating a class is creating a copy of the class which inherits all class variables and
+                            methods. To instantiate a class, we simply call the class as if it were a function, passing
+                            the arguments that the __init__ method defines. The return value will be the newly created
+                            object.
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Namespaces</h3>
+                        <p class="fs-5 mb-4">
+                            A namespace is a collection of currently defined symbolic names along with information about
+                            the object that each name references. It is like a dictionary in which the keys are the
+                            object names and the values are the objects themselves. Each key-value pair maps a name to
+                            its corresponding object.
+                            In a Python program, there are 3 main types of namespaces:
+                        <ul class="fs-5 mb-2">
+                            <li><b>Local</b> Namespace: This namespace includes local names inside a function. This
+                                namespace is created when a function is called, and it only lasts until the function
+                                returns.
+                            </li>
+                            <li><b>Global</b> Namespace: This namespace includes names from various imported modules
+                                that you are using in a project. It is created when the module is included in the
+                                project, and it lasts until the script ends.
+                            </li>
+                            <li><b>Built-in</b> Namespace: This namespace includes built-in functions and built-in
+                                exception names.
+                            </li>
+
+                        </ul>
+
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Constructors</h3>
+                        <p class="fs-5 mb-4">
+                            Constructors are generally used for instantiating an object. The task of constructors is to
+                            initialize the data members of the class when an object of the class is created. In Python
+                            the __init__() method is called the constructor and is always called when an object is
+                            created. Constructor takes its first argument as a reference to the instance being constructed known as self and the rest of the arguments are provided by the programmer.
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Static Variables</h3>
+                        <p class="fs-5 mb-4">
+                            Class or Static variables are the variables that belong to the class and not to objects.
+                            These variables are shared amongst objects of the class.
+                            All variables which are assigned a value in the class declaration are class variables.
+                            Static variable and methods are used when we want to define some behaviour or property
+                            specific to the class and which is something common for all the class objects.
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Static Methods</h3>
+                        <p class="fs-5 mb-4">
+                            Static methods are the methods which are bound to the class rather than an object of the
+                            class and hence are called using the class name and not the objects of the class.
+                            As static methods are bound to the class hence they cannot change the state of an object. We
+                            use <b>@staticmethod</b> to define a static method.
+                            For a static method, we don't provide the argument <b>self</b> because static methods don't
+                            operate on objects.
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Instance Variables</h3>
+                        <p class="fs-5 mb-4">
+                            Instance variables are the variables that belong to a particular objects i.e every object has its own copy of the instance attribute.
+                            These are called fields or attributes of an object
+                            The value of an instance variable varies from object to object.
+                            Instance variables are declared inside the instance method using <b>self</b> keyword.
+                            A constructor is used to define and initialize these variables.
+                            We can access the instance variable using the object and dot (.) operator.
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Instance Methods</h3>
+                        <p class="fs-5 mb-4">
+                            Instance methods are so called because they can access unique data of their instance.
+                            E.g. If you have two objects each created from a car class, then they each may have
+                            different properties. They may have different colors, engine sizes, seats, and so on.
+                            Instance methods must have self as a parameter, but you don't need to pass this in every
+                            time. you can use self to access any data or methods that may reside in your class. You
+                            won't be able to access them without going through self.
+                        </p>
+
+                        <h2 class="fw-bolder mt-3">Four fundamental concepts of Object-oriented programming</h2>
+                        <h3 class="fw-bolder mt-3">Inheritance</h3>
+                        <p class="fs-5 mb-4">Inheritance is the procedure in which one class inherits the attributes and
+                            methods of another class. The class whose properties and methods are inherited is known as
+                            Parent class. And the class that inherits the properties from the parent class is the Child
+                            class. Along with the inherited properties and methods, a child class can have its own properties and methods.
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Polymorphism</h3>
+                        <p class="fs-5 mb-4">Polymorphism means having many forms. In OOP it refers to the functions
+                            having the same names but carrying different functionalities.
+
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Encapsulation</h3>
+                        <p class="fs-5 mb-4">Encapsulation is a way to ensure security. It hides the data from the
+                            access of outsiders. Such as if an organization wants to protect an object/information from
+                            unwanted access by clients or any unauthorized person then encapsulation is the way to
+                            ensure this.
+
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Abstraction</h3>
+                        <p class="fs-5 mb-4">Abstraction is the concept of object-oriented programming that “shows” only
+                            essential attributes and “hides” unnecessary information. We use Abstraction for hiding the
+                            internal details or implementations of a function and showing its functionalities only. This
+                            is similar to the way you know how to drive a car without knowing the background mechanism.
+
+                        </p>
+
+                        <h2 class="fw-bolder mt-3">SOLID Coding Principles</h2>
+                        <p class="fs-5 mb-4">The principle of SOLID coding is an acronym originated by Robert C. Martin, and it stands for five different conventions of coding that can be use to improve the reliability of the code by working on its structure and its logical consistency.
+<br> The SOLID principles are:
+                            <ul class="fs-5 mb-2">
+                        <li>The Single-Responsibility Principle (SRP)</li>
+                        <li>The Open-Closed Principle (OCP)</li>
+                        <li>The Open-Closed Principle (OCP)</li>
+                        <li>The Interface Segregation Principle (ISP)</li>
+                        <li>The Dependency inversion Principle (DIP)</li>
+                    </ul>
+                        </p>
+
+                        <h2 class="fw-bolder mt-3">Design patterns</h2>
+                        <p class="fs-5 mb-4"><b>Design Patterns</b> is the most essential part of Software Engineering,
+                            as they provide the general repeatable solution to a commonly occurring problem in software
+                            design.
+                            They usually represent some of the best practices adopted by experienced object-oriented
+                            software developers.<br>
+                            There are 23 design patterns which can be classified in three categories: Creational,
+                            Structural and Behavioral patterns.
+                        <table class=" dsPattern fs-5 mb-4">
+                            <tr>
+                                <th style="width:20%">Design Patterns</th>
+                                <th>Description</th>
+                            </tr>
+
+                            <tr>
+                                <th >Creational Patterns</th>
+                                <td>These design patterns provide a way to create objects while hiding the creation
+                                    logic, rather than instantiating objects directly using new operator.
+                                </td>
+                            </tr>
+
+                        <tr>
+                            <th>Structural Patterns</th>
+                            <td>These design patterns concern class and object composition. Concept of inheritance is
+                                used to compose interfaces and define ways to compose objects to obtain new
+                                functionalities.
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Behavioral Patterns</th>
+                            <td>These design patterns are specifically concerned with communication between objects.
+                            </td>
+                        </tr>
+                        </table>
+                        </p>
+
+
+                        <h3 class="fw-bolder mt-3">What is Unit Testing & why it is important</h3>
+                        <p class="fs-5 mb-4">Unit testing involves testing individual components of the software program
+                            or application. The main purpose behind this is to check that all the individual parts are
+                            working as
+                            intended. A unit is known as the smallest possible component of software that can be tested.
+                            Umit
+                            testing is required to maintain code quality as it helps identify all kinds of issues with
+                            the software at a very early stage.
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Pytest</h3>
+                        <p class="fs-5 mb-4">The pytest framework makes it easy to write small, readable tests, and can
+                            scale to support complex functional testing for applications & libraries.
+                            pytest offers a core set of productivity features to filter and optimize your tests along
+                            with a flexible plugin system that extends its value even further.
+
+                        </p>
+
+                        <h3 class="fw-bolder mt-3">Pytest - Fixtures</h3>
+                        <p class="fs-5 mb-4">Fixtures are functions, which will run before each test function to which it is applied. Fixtures are used to feed some data to the tests such as database connections, URLs to test and some sort of input data. Therefore, instead of running the same code for every test, we can attach fixture function to the tests and it will run and return the data to the test before executing each test.
+                            <br>A function is marked as a fixture by:
+                            <pre class="fs-5"><code>@pytest.fixture</code></pre> </p>
+                        <p class="fs-5 mb-4">To access the fixture function, the tests have to mention the fixture name as input parameter.</p>
+
+                        <h3 class="fw-bolder mt-3">What is Pylint?</h3>
+                        <p class="fs-5 mb-4">Pylint is a tool that checks for errors in Python code, tries to enforce a
+                            coding standard and looks for code smells. It can also look for certain type errors, it can
+                            recommend suggestions about how particular blocks can be refactored and can offer you
+                            details about the code's complexity.
+                        </p>
+
+
+                        <h2 class="fw-bolder mt-3">Type Hinting</h2>
+                        <p class="fs-5 mb-4"> Type hinting is a formal solution to statically indicate the type of a
+                            value within your Python code.
+                            Here’s an example of adding type information to a function. You annotate the arguments and
+                            the return value:
+                        <pre class="fs-5"><code>def greet(name: str) -> str:
+      return "Hello, " + name </code></pre>
+                        </p>
+
+                        <p class="fs-5 mb-4">The name: str syntax indicates the name argument should be of type str. The -> syntax indicates
+                            the greet() function will return a string.</p>
+
+
+                        <h2 class="fw-bolder mt-3">Type Casting</h2>
+                        <p class="fs-5 mb-4">Type Casting is the method to convert the variable data type into a certain
+                            data type in order to the operation required to be performed by users.
+                            <br>Mainly in type casting can be done with these data type function: –
+                        <ul class="fs-5 mb-2">
+                            <li><b>Int():</b> Int() function take float or string as an argument and return int type
+                                object.
+                            </li>
+                            <li><b>float(): </b> float() function take int or string as an argument and return float
+                                type object.
+                            </li>
+                            <li><b>str(): </b> str() function take float or int as an argument and return string type
+                                object.
+                            </li>
+                        </ul>
+
+                        </p>
+
+
+
+                    </section>
+                </article>
+            </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+                <!-- Url widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Useful Links</div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <ul class="list-unstyled mb-0 fs-5">
+                                <li><a href="https://www.analyticsvidhya.com/blog/2020/09/object-oriented-programming/"
+                                       target="_blank">OOP Basics</a></li>
+                                <li><a href="https://towardsdatascience.com/solid-coding-in-python-1281392a6a94" target="_blank">SOLID principles</a></li>
+                                <li><a href="https://www.tutorialspoint.com/pytest/index.htm"
+                                       target="_blank">Pytest Tutorial</a></li>
+                                <li><a href="https://performancelabus.com/unit-testing-importance/"
+                                       target="_blank">Unit testing</a></li>
+                                <li><a href="https://automationpanda.com/2020/07/07/arrange-act-assert-a-pattern-for-writing-good-tests/"
+                                       target="_blank">AAA testing</a></li>
+                                <li><a href="https://www.geeksforgeeks.org/python-design-patterns/"
+                                       target="_blank">Design Patters</a></li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">My Calculator Project</div>
+                    <div class="card-body">
+                        <a class="fs-5" href="https://github.com/komal-untwal/is601_proj1" target="_blank">https://github.com/komal-untwal/is601_proj1</a>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+{% endblock %}

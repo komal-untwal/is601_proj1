@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>{% extends "base.html" %}
+{% block content %}
+    <!-- Page content-->
+    <div class="container mt-3 ml-2">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Post content-->
+                <article>
+                    <!-- Post header-->
+                    <header class="mb-4">
+                        <!-- Post title-->
+                        <h1 class="fw-bolder mb-1">Article on SOLID Coding & Design Patterns in Python</h1>
+                        <!-- Post meta content
+                        <div class="text-muted fst-italic mb-2">Posted on January 1, 2021 by Start Bootstrap</div>
+
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
+                    </header>
+                    <!-- Preview image figure-->
+                    <figure class="mb-4"><img class="img-fluid rounded"
+                                              src="{{ url_for('static', filename='images/solid.jpg') }}"
+                                              style="width:900px;height:400px" alt="..."/>
+                    </figure>
+
+                    <!-- Post content-->
+                    <section class="mb-5">
+
+                        <p class="fs-5 mb-4">SOLID is a set of object-oriented design principles aimed at making code
+                            more maintainable and flexible.
+                            The principle of SOLID coding is an acronym originated by Robert C. Martin, and it stands
+                            for five different conventions of coding that can be used to improve the reliability of the
+                            code by working on its structure and its logical consistency.
+                            <br> SOLID is an acronym that stands for the following: </p>
+                        <ol class="fs-5 mb-2">
+                            <h4 class="fw-bolder mb-1 mt-5">
+                                <li>The Single-Responsibility Principle (SRP)</li>
+                            </h4>
+                            <p class="fs-5 mb-4">This states that a <b>class should have a single responsibility</b>,
+                                but more than that, a <b>class should only have one reason to change</b>.
+                                To illustrate this principle, we will see an example code from my calculator class:
+                            <figure class="mb-4"><img class="img-fluid rounded"
+                                                      src="{{ url_for('static', filename='images/s1.png') }}"
+                                                      style="width:700px;height:900px" alt="..."/>
+                            </figure>
+                            </p>
+
+                            <p class="fs-5 mb-4">
+                                As shown in above code, we have split our calculator operations into 3 different classes
+                                as to separate the addition, subtraction & multiplication logic.
+                                A bad approach would be to have a single class or function doing all the work. By
+                                following this principle, we have only one reason to change each class individually.
+                            </p>
+
+
+                            <h4 class="fw-bolder mb-1 mt-5">
+                                <li>The Open-Closed Principle (OCP)</li>
+                            </h4>
+                            <p class="fs-5 mb-4">In the open/closed principle classes should be <b>open for extension,
+                                but closed for modification.</b> Essentially meaning that classes should be extended to
+                                change functionality, rather than being altered into something else.
+                                In other words: You should not need to modify the code you have already written to
+                                accommodate new functionality, but simply add what you now need.<br>
+                                <br>
+                                This does not mean that you cannot change your code when the code premises needs to be
+                                modified, but that if you need to add new functions similar to the one present, you
+                                should not require to changed other parts of the code.
+                                <br>
+                                To clarify this point let’s refer to the example we saw earlier. If we want to add new
+                                functionality, for example, compute the Division, we will only need to add a class
+                                "Division" just like how we have separate classes for addition, subtraction &
+                                multiplication, and no modification in any other part of the code needs to happen.
+
+                            </p>
+                        <h4 class="fw-bolder mb-1 mt-5">
+                            <li>The Liskov Substitution Principle (LSP)</li>
+                        </h4>
+                        <p class="fs-5 mb-4">Created by Barbara Liskov in a 1987, this states that <b>objects should be
+                            replaceable by their subtypes without altering how the program works.</b> In other words,
+                            <b>derived classes must be substitutable for their base classes</b> without causing errors.
+                            <br><br>
+                            In the most simplistic way, I can put it, this principle can be summarised by saying:
+                            If in a subclass, you redefine a function that is also present in the base class, the two
+                            functions ought to have the same behaviour. This, though, does not mean that they must be
+                            mandatorily equal, but that the user, should expect that the same type of result, given the
+                            same input. <br>
+                            The result of this principle is that we’d write our code in a consistent manner and, the
+                            end-user will need to learn how our code works, only one.
+                        </p>
+
+                        <h4 class="fw-bolder mb-1 mt-5">
+                            <li>The Interface Segregation Principle (ISP)</li>
+                        </h4>
+                        <p class="fs-5 mb-4">This states that <b>many client-specific interfaces are better than one
+                            general-purpose interface.</b> In other words, classes should not be forced to implement
+                            interfaces they do not use.
+                        <br>This problem arises, primarily, when, a subclass inherits methods from a base class that it
+                        does not need.<br>
+                        <br>This principle is closely connected with the other ones and specifically, it tells us to keep
+                            the content of a subclass clean from elements of no use to that subclass. This has the final
+                            aim to keep our classes clean and minimise mistakes.
+                            </p>
+
+                            <h4 class="fw-bolder mb-1 mt-5">
+                                <li>The Dependency inversion Principle (DIP)</li>
+                            </h4>
+                            <p class="fs-5 mb-4">this states that <b>classes should depend upon abstractions, not
+                                concretions.</b> Essentially, don't depend on concrete classes, depend upon interfaces.
+
+                                <br><br>
+                                With the DIP in mind, we would start from the end of the project, in which our code is
+                                independent of what takes in input, it is not susceptible to changes and out of our
+                                direct control.
+                                <br>
+                                let's see an example of the Calculation class that is inherited by the Addition,
+                                Subtraction & Multiplication classes.
+
+                            <pre class="highlight fs-5 mb-4"><code>
+  <span class="g">#Parent Class</span>
+  <span class="k" data-original-title="" title="">class</span> Calculation:
+          <span class="g"> """ calculation abstract base class"""</span>
+
+          <span class="k" data-original-title="" title="">def</span> <span class="p">__init__</span>(<span class="s"
+                                                                                                           data-original-title=""
+                                                                                                           title="">self</span>, tuple_list: tuple):
+                <span class="g"> """ constructor method"""</span>
+                <span class="s" data-original-title="" title="">self</span>.values = Calculation.convert_args_to_tuple_of_float(tuple_list)
+
+          <span class="o" data-original-title="" title="">@classmethod</span>
+          <span class="k" data-original-title="" title="">def</span> <span class="s">create</span>(<span class="s"
+                                                                                                         data-original-title=""
+                                                                                                         title="">cls</span>, tuple_list: tuple):
+                 <span class="g"> """ factory method"""</span>
+                 <span class="k" data-original-title="" title="">return</span> <span class="s" data-original-title=""
+                                                                                     title="">cls</span>(tuple_list)
+
+          <span class="o" data-original-title="" title="">@staticmethod</span>
+          <span class="k" data-original-title="" title="">def</span> <span
+                                    class="s">convert_args_to_tuple_of_float</span>(tuple_list):
+                 <span class="g"> """ standardize values to list of floats"""</span>
+                 list_values_float = []
+                 <span class="k" data-original-title="" title="">for</span> item <span class="k" data-original-title=""
+                                                                                       title="">in</span> tuple_list:
+                       list_values_float.append(float(item))
+                 <span class="k" data-original-title="" title="">return</span> tuple(list_values_float)
+
+
+  <span class="g">#Child class</span>
+  <span class="k" data-original-title="" title="">class</span> Addition(Calculation):
+         <span class="g"> """ calculation addition class"""</span>
+
+          <span class="k" data-original-title="" title="">def</span> <span class="s">get_result</span>(<span class="s"
+                                                                                                             data-original-title=""
+                                                                                                             title="">self</span>):
+                <span class="g"> """get the addition results"""</span>
+                sum_of_values = 0.0
+                <span class="k" data-original-title="" title="">for</span> value <span class="k" data-original-title=""
+                                                                                       title="">in</span> self.values:
+                      sum_of_values = Add.add(value, sum_of_values)
+                <span class="k" data-original-title="" title="">return</span> sum_of_values
+
+                  </code></pre>
+
+
+                            </p>
+
+                            <p class="fs-5 mb-4">
+                                The above shown calculation class is designed in such a way
+                                that it can be inherited by all the mentioned classes without any dependency on each
+                                other.
+                                The parent class Calculation is responsible to convert the tuple list elements into
+                                float data type before passing it to any operations. By abstracting this task on this
+                                level, enable us to reuse the logic to apply to any further similar operations which
+                                might require this type conversion of its parameters.
+                            </p>
+
+
+                        </ol>
+                        <br>
+                        <br>
+
+                        <h2 class="fw-bolder mt-3">Design patterns</h2>
+
+                        <p class="fs-5 mb-4"><b>Design Patterns</b> is the most essential part of Software Engineering,
+                            as they provide the general repeatable solution to a commonly occurring problem in software
+                            design.
+                            They usually represent some of the best practices adopted by experienced object-oriented
+                            software developers.<br>
+                            There are 23 design patterns which can be classified in three categories: Creational,
+                            Structural and Behavioral patterns.
+                        </p>
+
+                        <h3 class="fw-bolder mb-4 mt-5">Introducing Factory Method</h3>
+                        <p class="fs-5 mb-4"><b>Factory Method</b> is a creational design pattern used to create
+                            concrete implementations of a common interface.
+
+                            It separates the process of creating an object from the code that depends on the interface
+                            of the object.
+                            Instead of using a complex if/elif/else conditional structure to determine the concrete
+                            implementation, the application delegates that decision to a separate component that creates
+                            the concrete object. With this approach, the application code is simplified, making it more
+                            reusable and easier to maintain.
+
+                        </p>
+                        <h5 class="fw-bolder mb-4 mt-5">Basic Implementation of Factory Method</h5>
+                        <p class="fs-5 mb-4">The central idea in Factory Method is to provide a separate component with
+                            the responsibility to decide which concrete implementation should be used based on some
+                            specified parameter.
+
+                        <figure class="mb-4"><img class="img-fluid rounded"
+                                                  src="{{ url_for('static', filename='images/dp1.png') }}"
+                                                  style="width:700px;height:900px" alt="..."/>
+                        </figure>
+
+                        <p class="fs-5 mb-4">
+                            To implement the type conversion of the tuple list into float before passing the parameters
+                            to the calculation operations,
+                            we have implemented the factory method to separate the concrete responsibility of type
+                            conversion in the base class Calculation.
+                            as we can see in the below code, In all the operations, we are calling the create() factory
+                            method of the Calculation class, which takes care of the data type conversion required for
+                            the operations.
+                        </p>
+
+                        <figure class="mb-4"><img class="img-fluid rounded"
+                                                  src="{{ url_for('static', filename='images/dp2.png') }}"
+                                                  style="width:700px;height:900px" alt="..."/>
+                        </figure>
+
+                        </p>
+
+
+                        <!-- conclusion -->
+                        <h3 class="fw-bolder mb-4 mt-5">Conclusion</h3>
+                        <p class="fs-5 mb-4">
+                            Using SOLID means writing more classes and creating more interfaces,that said, it does force
+                            you to separate concerns, to think about inheritance, prevent repeating code and carefully
+                            approach writing applications. Thinking about how objects fit together in an application is,
+                            after all, what object-oriented code is all about.<br><br>
+
+                            Factory Method is a widely used, creational design pattern that can be used in many
+                            situations where multiple concrete implementations of an interface exist.
+
+                            The pattern removes complex logical code that is hard to maintain, and replaces it with a
+                            design that is reusable and extensible. The pattern avoids modifying existing code to
+                            support new requirements.
+
+                        </p>
+
+
+
+
+                    </section>
+                </article>
+            </div>
+            <!-- Side widgets-->
+            <div class="col-lg-4">
+                <!-- Url widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Useful Links</div>
+                    <div class="card-body">
+                        <div class="row">
+
+                            <ul class="list-unstyled mb-0 fs-5">
+                                <li><a href="https://realpython.com/factory-method-python/"
+                                       target="_blank">Factory method</a></li>
+                                <li><a href="https://www.hashbangcode.com/article/solid-principles-python" target="_blank"> SOLID Coding in Python</a></li>
+                                <li><a href="https://refactoring.guru/design-patterns/python"
+                                       target="_blank">Design Patterns in Python</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">My Calculator Project</div>
+                    <div class="card-body">
+                        <a class="fs-5" href="https://github.com/komal-untwal/is601_proj1" target="_blank">https://github.com/komal-untwal/is601_proj1</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+{% endblock %}
